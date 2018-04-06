@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rizvn.app.dao.CustomerDao">
+
+  <select id="findByRef" resultType="com.rizvn.app.domain.Customer">
+    SELECT
+      ref,
+      name,
+      addressLine1,
+      town,
+      county,
+      postcode,
+      active
+    FROM Customer
+    WHERE ref = #{ref}
+    AND active = TRUE
+  </select>
+
+  <select id="selectTop3" resultType="com.rizvn.app.domain.Customer">
+    SELECT
+      ref,
+      name,
+      addressLine1,
+      town,
+      county,
+      postcode,
+      active
+    FROM Customer
+    WHERE active = TRUE
+    LIMIT 3
+  </select>
+
+</mapper>
